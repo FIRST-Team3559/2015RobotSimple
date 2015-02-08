@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	private RobotDrive myRobot;
 	Joystick left, right, lift;
 	Talon winch;
-	private Gyro gyro;
+	//private Gyro gyro;
 	int autoLoopCounter;
 
 	double Kp = 0.03;
@@ -41,8 +41,8 @@ public class Robot extends IterativeRobot {
 		right = new Joystick(1);
 		winch = new Talon(0);
 		
-		myRobot.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
-		myRobot.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+		//myRobot.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+		//myRobot.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		
 		CameraServer server = CameraServer.getInstance();
 		server.setQuality(20);
@@ -74,17 +74,17 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
-		myRobot.setSafetyEnabled(true);
+		//myRobot.setSafetyEnabled(true);
 		while (isOperatorControl() && isEnabled()) {
 			winch.set(0.0);
-			gyro.getAngle();
+			//gyro.getAngle();
 			myRobot.tankDrive(left, right);
 			Timer.delay(0.01);
 			while (left.getRawButton(1) == true){
 				winch.set(-0.5);
 			}
 			while (right.getRawButton(1) == true){
-				winch.set(0.3);
+				winch.set(0.5);
 			}
 			}
 			
